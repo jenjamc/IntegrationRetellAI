@@ -137,4 +137,5 @@ cython_debug/
 # FastAPI
 *.db
 .idea/
+.DS_Store
 
