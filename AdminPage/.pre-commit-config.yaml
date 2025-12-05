@@ -1,0 +1,51 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        args: [ --markdown-linebreak-ext=md ]
+        files: ^admin_page/.*\.py$
+      - id: end-of-file-fixer
+        exclude: static|README.md|release_notes
+        files: ^admin_page/.*\.py$
+      - id: check-docstring-first
+        files: ^admin_page/.*\.py$
+      - id: debug-statements
+        files: ^admin_page/.*\.py$
+      - id: double-quote-string-fixer
+        files: ^admin_page/.*\.py$
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-typing-imports
+          - flake8-comprehensions
+          - flake8-eradicate
+          - flake8-spellcheck
+          - dlint
+          - darglint
+          - mccabe
+          - pep8-naming
+        args:
+          - "--max-line-length=120"
+          - "--classmethod-decorators=classmethod"
+          - "--whitelist=whitelist.txt"
+          - "--config=.flake8"
+        files: ^admin_page/.*\.py$
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.1
+    hooks:
+      - id: ruff
+        types_or: [ python, pyi, jupyter ]
+        args: [ --fix ]
+      - id: ruff-format
+        types_or: [ python, pyi, jupyter ]
+  - repo: local
+    hooks:
+      - id: bandit-security-check
+        name: Bandit security check
+        entry: bandit
+        args: [ -q, -x, test ]
+        language: system
+        files: admin_page/

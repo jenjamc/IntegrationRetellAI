@@ -1,0 +1,52 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+{{ super() }}
+<div class="row-fluid">
+    <div>
+        {% if current_user.is_authenticated %}
+        <div class="container">
+            <div class="row">
+                {% if statistic %}
+                {% for st in statistic %}
+
+                <div class="col-sm-4">
+                    <div class="card text-center"
+                         style="border: 1px solid; border-radius: 15px; padding: 10px; margin: 10px">
+                        <div class="card-body">
+                            <p class="card-title" style="font-size: 20px">{{ st.name }}</p>
+                            <h2 class="card-text">{{ st.value }}</h2>
+                            {% if st.url %}
+                            <a href="{{ st.url }}" class="btn btn-primary">Go to {{ st.name }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <form method="POST" action="">
+            {{ form.hidden_tag() if form.hidden_tag }}
+            {% for f in form if f.type != 'CSRFTokenField' %}
+            <div class="form-group row">
+                {{ f.label(class_="col-sm-2 col-form-label") }}
+                <div class="col-sm-10">
+                    {{ f(class_='form-control') }}
+                </div>
+                {% if f.errors %}
+                <ul>
+                    {% for e in f.errors %}
+                    <li>{{ e }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button class="btn btn-info" type="submit" style="margin-right: 20px">Login</button>
+        </form>
+        {{ link | safe }}
+        {% endif %}
+    </div>
+</div>
+{% endblock body %}
