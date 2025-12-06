@@ -1,12 +1,10 @@
 from fastapi import APIRouter
 from fastapi import Depends
-from pydantic import EmailStr
 
 from user_manager.api.dependencies.auth import get_current_user
 from user_manager.api.dependencies.services import get_jwt_service
 from user_manager.api.dependencies.services import get_user_service
 from user_manager.models import User
-from user_manager.schemas.base import OKSchema
 from user_manager.schemas.jwt import JwtResponseSchema
 from user_manager.schemas.user import CreateUserSchema
 from user_manager.schemas.user import LoginUserSchema

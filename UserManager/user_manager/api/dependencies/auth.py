@@ -7,7 +7,6 @@ from fastapi import Depends
 from fastapi import HTTPException
 from fastapi.security import HTTPAuthorizationCredentials
 from fastapi.security import HTTPBearer
-from sentry_sdk import set_tag
 
 from user_manager import settings
 from user_manager.api.dependencies.services import get_user_service

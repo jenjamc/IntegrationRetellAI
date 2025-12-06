@@ -1,7 +1,5 @@
 from enum import Enum
-from typing import Optional
 
-from pydantic import AnyHttpUrl
 from pydantic_settings import BaseSettings
 
 
@@ -38,7 +36,6 @@ class Settings(BaseSettings):
     SECRET_KEY: str = 'your-secret-key'
     ALGORITHM: str = 'HS256'
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
-
 
     @property
     def sqlalchemy_database_uri(self) -> str:

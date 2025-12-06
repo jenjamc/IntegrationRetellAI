@@ -134,4 +134,3 @@ async def auth_client(
 @pytest.fixture
 def non_mocked_hosts() -> list:
     return ['test']
-

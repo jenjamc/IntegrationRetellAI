@@ -1,6 +1,3 @@
-from contextlib import asynccontextmanager
-from typing import AsyncGenerator
-
 from fastapi import FastAPI
 from sqlalchemy.ext.asyncio import create_async_engine
 
@@ -27,7 +24,6 @@ def init_db(app_settings: Settings):
     engine = create_async_engine(app_settings.sqlalchemy_database_uri)
     async_session.configure(bind=engine)
     metadata.bind = engine  # type: ignore
-
 
 
 def create_app(app_settings: Settings = settings) -> FastAPI:

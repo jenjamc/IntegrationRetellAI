@@ -1,6 +1,5 @@
 import multiprocessing
 
-
 from user_manager.settings.conf import settings
 from user_manager.settings.logging import LOG_CONFIG
 
