@@ -21,11 +21,11 @@ jobs:
       - name: Run pre-commit inside AdminPage container
         run: |
           docker run \
-            -v ${{ github.workspace }}:/repo \
-            -v ${{ github.workspace }}/.git:/repo/.git \
-            -w /repo \
-            -e GIT_DIR=/repo/.git \
-            -e GIT_WORK_TREE=/repo \
+            -v ${{ github.workspace }}:/app \
+            -v ${{ github.workspace }}/.git:/app/.git \
+            -w /app \
+            -e GIT_DIR=/app/.git \
+            -e GIT_WORK_TREE=/app \
             admin-page \
             pre-commit run --all-files
 
