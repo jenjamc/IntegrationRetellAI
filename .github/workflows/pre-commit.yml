@@ -9,7 +9,6 @@ on:
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,23 +18,29 @@ jobs:
       - name: Build AdminPage image
         run: docker build -t admin-page ./AdminPage
 
-      - name: Run pre-commit in AdminPage container
+      - name: Run pre-commit inside AdminPage container
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}/AdminPage:/app \
-            -v ${{ github.workspace }}/.git:/app/.git \
+          docker run \
+            -v ${{ github.workspace }}:/repo \
+            -v ${{ github.workspace }}/.git:/repo/.git \
             -w /app \
+            -e GIT_DIR=/repo/.git \
+            -e GIT_WORK_TREE=/repo \
             admin-page \
-            pre-commit run --all-files
+            pre-commit run --config /app/.pre-commit-config.yaml run --all-files
 
       - name: Build UserManager image
         run: docker build -t user-manager ./UserManager
 
-      - name: Run pre-commit in UserManager container
+      - name: Run pre-commit inside UserManager container
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}/UserManager:/app \
-            -v ${{ github.workspace }}/.git:/app/.git \
+          docker run \
+            -v ${{ github.workspace }}:/repo \
+            -v ${{ github.workspace }}/.git:/repo/.git \
             -w /app \
+            -e GIT_DIR=/repo/.git \
+            -e GIT_WORK_TREE=/repo \
             user-manager \
-            pre-commit run --all-files
+            pre-commit run --config /app/.pre-commit-config.yaml --all-files
+
+        
