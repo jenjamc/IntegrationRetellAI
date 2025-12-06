@@ -10,7 +10,7 @@ export default function Home() {
 
   async function startCall() {
     await retellWebClient.startCall({
-      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9pbiI6dHJ1ZSwicm9vbSI6IndlYl9jYWxsXzA3MDFlYWFhMmY1Y2UyYzMwOTM1YWZhNDc5NCJ9LCJpc3MiOiJBUEl3UkNGdVBCYXdtMmgiLCJleHAiOjE3NjUwNDAyODEsIm5iZiI6MCwic3ViIjoiY2xpZW50In0.GIRNuOuuiOoEd0HLuh0wSzkKEk6B8DA1UyrU2BIY4rA',
+      accessToken: 'agent_78233f717b41c36cb4f5266491',
     });
   }
 
