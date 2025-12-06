@@ -13,16 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
+      - name: Build AdminPage image
+        run: docker build -t admin-page ./AdminPage
 
-      - name: Install pre-commit
-        run: pip install pre-commit
-
-      - name: Run pre-commit for AdminPage
+      - name: Run pre-commit inside AdminPage container
         run: |
-          cd AdminPage
-          pre-commit run --all-files
+          docker run \
+            -v ${{ github.workspace }}:/repo \
+            -w /repo \
+            admin-page \
+            pre-commit run --all-files
 
         
