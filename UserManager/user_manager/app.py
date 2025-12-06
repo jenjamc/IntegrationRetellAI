@@ -37,7 +37,7 @@ def create_app(app_settings: Settings = settings) -> FastAPI:
         openapi_url=None if is_production else f'{PREFIX}/openapi.json',
         version=version,
     )
-    init_middlewares(fast_api_app)
+    init_middlewares(fast_api_app, app_settings)
     FastAPIExceptionHandlers(fast_api_app)
     init_db(app_settings)
     init_routes(fast_api_app)

@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     ENV: Env = Env.PRODUCTION
     DEBUG: bool = False
     LOG_LEVEL: str = LogLevel.INFO
-    ALLOWED_ORIGINS: str = 'http://localhost http://localhost:3000 http://127.0.0.1:3000'
+    ALLOWED_ORIGINS: str = 'http://localhost'
 
     DB_DRIVER: str = 'postgresql+asyncpg'
     DB_USER: str = 'postgres'
