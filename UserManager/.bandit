@@ -1,0 +1,3 @@
+[bandit]
+targets: user_manager/
+exclude: test_*.py
