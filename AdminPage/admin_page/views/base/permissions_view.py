@@ -2,10 +2,6 @@ from flask import flash
 from flask import redirect
 from flask import url_for
 from flask_login import current_user
-from wtforms import Form
-
-from admin_page.models.admin_page.base import BaseModel
-from admin_page.settings.db import db
 
 
 class PermissionsViewMixin:
@@ -19,6 +15,8 @@ class PermissionsViewMixin:
         if not self.is_visible():
             flash("Don't have permissions", category='error')
             return redirect(url_for('admin.index'))
+
+        return None
 
     def is_visible(self) -> bool:
         if not current_user.role:

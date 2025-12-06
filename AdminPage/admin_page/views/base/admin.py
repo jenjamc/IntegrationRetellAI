@@ -1,15 +1,9 @@
-from datetime import datetime
-from datetime import timedelta
-from typing import Any
-
 import flask_admin
 import flask_login
 from flask import redirect
 from flask import request
 from flask import url_for
 from flask_admin import expose
-from sqlalchemy import func
-from sqlalchemy import select
 
 from admin_page.forms.base.login import LoginAdminForm
 from admin_page.models.admin_page import AdminUser
@@ -17,7 +11,6 @@ from admin_page.settings.db import db
 
 
 class AdminIndexView(flask_admin.AdminIndexView):
-
     @expose('/')
     def index(self):
         if not flask_login.current_user.is_authenticated:

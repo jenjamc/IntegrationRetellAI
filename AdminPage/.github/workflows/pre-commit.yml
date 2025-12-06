@@ -1,0 +1,21 @@
+name: Pre-commit checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run pre-commit for AdminPage
+        run: |
+          cd AdminPage
+          pre-commit run --all-files
+
+        

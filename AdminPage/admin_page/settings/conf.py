@@ -1,7 +1,5 @@
 from enum import Enum
 
-from pydantic import AnyHttpUrl
-from pydantic import HttpUrl
 from pydantic_settings import BaseSettings
 
 

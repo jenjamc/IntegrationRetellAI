@@ -1,18 +1,7 @@
-from enum import StrEnum
-from typing import TYPE_CHECKING
-
-from sqlalchemy import Enum
-from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
-from sqlalchemy.orm import relationship
 
-from admin_page.exceptions import HTTPClientError
 from admin_page.models.user_manager.base import BaseModel
-
-
-
-
 
 
 class User(BaseModel):

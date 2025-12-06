@@ -1,0 +1,1 @@
+EXCLUDED_COLUMNS = ('password',)

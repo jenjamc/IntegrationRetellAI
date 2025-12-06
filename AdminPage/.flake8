@@ -4,4 +4,4 @@ min_python_version = 3.12
 ignore = E501, W503, S413, DUO133, E231, E702
 dictionaries = en_US,python,technical
 max-line-length = 120
-exclude = __init__.py, env.py
+exclude = __init__.py, env.py, migrations/*.py

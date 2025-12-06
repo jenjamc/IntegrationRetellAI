@@ -9,7 +9,7 @@ class BaseCustomView(PermissionsViewMixin, BaseView):
     pass
 
 
-class BaseModelView(BaseCustomView, ModelView):
+class BaseModelView(PermissionsViewMixin, ModelView):
     create_modal = False
     edit_modal = False
     can_export = True
