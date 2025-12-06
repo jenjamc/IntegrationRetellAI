@@ -22,7 +22,10 @@ jobs:
         run: |
           docker run \
             -v ${{ github.workspace }}:/repo \
+            -v ${{ github.workspace }}/.git:/repo/.git \
             -w /repo \
+            -e GIT_DIR=/repo/.git \
+            -e GIT_WORK_TREE=/repo \
             admin-page \
             pre-commit run --all-files
 
