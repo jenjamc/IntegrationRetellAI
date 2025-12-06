@@ -27,7 +27,7 @@ jobs:
             -e GIT_DIR=/repo/.git \
             -e GIT_WORK_TREE=/repo \
             admin-page \
-            pre-commit run --config /app/.pre-commit-config.yaml
+            pre-commit run --config /app/.pre-commit-config.yaml --all-files
 
       - name: Build UserManager image
         run: docker build -t user-manager ./UserManager
@@ -41,6 +41,6 @@ jobs:
             -e GIT_DIR=/repo/.git \
             -e GIT_WORK_TREE=/repo \
             user-manager \
-            pre-commit run --config /app/.pre-commit-config.yaml
+            pre-commit run --config /app/.pre-commit-config.yaml --all-files
 
         
