@@ -55,6 +55,7 @@ in AdminPage folder
 ``` bash
 bin/poetry install
 docker compose build
+bin/alembic upgrade head
 docker compose up
 ```
 
@@ -63,6 +64,7 @@ in UserManager folder
 ``` bash
 bin/poetry install
 docker compose build
+bin/alembic upgrade head
 docker compose up
 ```
 

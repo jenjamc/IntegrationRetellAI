@@ -1,7 +1,6 @@
 from decimal import Decimal
 from enum import StrEnum
 
-
 COST_CALL_PER_MINUTE: Decimal = Decimal('0.4')
 
 

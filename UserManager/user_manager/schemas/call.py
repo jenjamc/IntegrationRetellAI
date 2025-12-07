@@ -26,12 +26,12 @@ class UpdateCallSchema(BaseModel):
     call_ended_ms: int
     duration_ms: int
 
-    @computed_field
+    @computed_field  # type: ignore
     @property
     def billed_seconds(self) -> int:
         return self.duration_ms // 1000
 
-    @computed_field
+    @computed_field  # type: ignore
     @property
     def cost_dollars(self) -> Decimal:
         minutes = Decimal(self.billed_seconds / 60)
@@ -40,7 +40,7 @@ class UpdateCallSchema(BaseModel):
 
         return minutes * constants.COST_CALL_PER_MINUTE
 
-    @computed_field
+    @computed_field  # type: ignore
     @property
     def ended_at(self) -> datetime:
         return datetime.fromtimestamp(self.call_ended_ms // 1000)
