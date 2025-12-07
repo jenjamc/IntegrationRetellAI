@@ -15,14 +15,11 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from user_manager.app import create_app
 from user_manager.models import Base
 from user_manager.models import metadata
-from user_manager.models import User
 from user_manager.settings.conf import Env
 from user_manager.settings.conf import Settings
 from user_manager.settings.conf import settings
 from user_manager.settings.db import async_session
-from user_manager.tests.authenticated_test_client import AuthenticatedTestClient
 from user_manager.tests.factories import FACTORIES
-from user_manager.tests.factories import UserFactory
 
 
 async def _create_test_db(engine: AsyncEngine, new_db_name: str):
@@ -101,33 +98,6 @@ async def clear_db(session: AsyncSession) -> AsyncGenerator[None, None]:
 @pytest.fixture(scope='session')
 async def client(app: FastAPI) -> AsyncGenerator[AsyncClient, None]:
     async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test/users/') as client:
-        yield client
-
-
-@pytest.fixture(scope='session')
-async def internal_client(app: FastAPI) -> AsyncGenerator[AsyncClient, None]:
-    async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test/internal/users/') as client:
-        yield client
-
-
-@pytest.fixture(scope='function')
-async def default_user(session: AsyncSession) -> User:
-    user = UserFactory()
-    await session.commit()
-    return user
-
-
-@pytest.fixture(scope='function')
-async def auth_client(
-    app: FastAPI,
-    session: AsyncSession,
-    default_user: User,
-) -> AsyncGenerator[AuthenticatedTestClient, None]:
-    async with AuthenticatedTestClient(
-        transport=ASGITransport(app=app),
-        base_url='http://test/users/',
-        user=default_user,
-    ) as client:
         yield client
 
 

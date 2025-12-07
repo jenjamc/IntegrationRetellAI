@@ -13,12 +13,10 @@ if TYPE_CHECKING:
 
 
 class BalanceAdjustment(BaseModel):
-    __tablename__ = 'BalanceAdjustments'
+    __tablename__ = 'balance_adjustments'
 
     delta_dollars: Mapped[Decimal]
     reason: Mapped[str]
     tenant_id: Mapped[int] = mapped_column(ForeignKey('tenants.id'))
 
     tenant: Mapped['Tenant'] = relationship('Tenant', back_populates='balance_adjustments')
-
-

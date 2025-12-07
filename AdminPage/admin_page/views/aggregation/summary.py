@@ -23,7 +23,7 @@ class ClientsSummaryView(BaseView):
                 Tenant.agent_id,
                 func.count(Call.id).label('total_calls'),
                 func.coalesce(func.sum(Call.billed_seconds) / 60, 0).label('total_minutes'),
-                func.coalesce(Balance.current_balance, 0).label('current_balance')
+                func.coalesce(Balance.current_balance, 0).label('current_balance'),
             )
             .join(User, User.tenant_id == Tenant.id)
             .outerjoin(Call, Call.tenant_id == Tenant.id)

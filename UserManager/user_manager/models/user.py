@@ -21,5 +21,3 @@ class User(BaseModel):
     tenant_id: Mapped[int] = mapped_column(ForeignKey('tenants.id'))
 
     tenant: Mapped['Tenant'] = relationship('Tenant', back_populates='user')
-
-

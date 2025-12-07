@@ -34,12 +34,14 @@ def init_views(admin_app: 'Admin') -> None:
     # User Manager
     admin_app.add_view(UsersView(User, db.session, name='Users', category='User Manager'))
     admin_app.add_view(BalanceView(Balance, db.session, name='Balances', category='User Manager'))
-    admin_app.add_view(BalanceAdjustmentView(
-        BalanceAdjustment,
-        db.session,
-        name='Balance Adjustments',
-        category='User Manager',
-    ))
+    admin_app.add_view(
+        BalanceAdjustmentView(
+            BalanceAdjustment,
+            db.session,
+            name='Balance Adjustments',
+            category='User Manager',
+        )
+    )
     admin_app.add_view(CallView(Call, db.session, name='Calls', category='User Manager'))
     admin_app.add_view(TenantView(Tenant, db.session, name='Tenants', category='User Manager'))
 

@@ -1,12 +1,6 @@
-import json
-from datetime import datetime
-from datetime import timedelta
 from typing import Sequence
 
-import jwt
 from retell import AsyncRetell
-from retell.types import AgentResponse
-from sqlalchemy import Column
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -44,19 +38,14 @@ class RetellService(BaseService[Tenant]):
         tenant = await self._create_tenant(agent_schema)
         return tenant
 
-
     async def create_web_call(self, agent_id: str) -> AccessTokenSchema:
-        agent_response = await self.client.call.create_web_call(
-            agent_id=agent_id
-        )
+        agent_response = await self.client.call.create_web_call(agent_id=agent_id)
         return AccessTokenSchema(call_id=agent_response.call_id, access_token=agent_response.access_token)
-
 
     async def get_tenant_by_agent_id(self, agent_id: str) -> Tenant:
         if tenant := await self.fetch_one(filters=(self.MODEL.agent_id == agent_id,)):
             return tenant
         raise DoesNotExistError(ErrorMessages.TENANT_DOES_NOT_EXIST)
-
 
     async def get_tenant_by_tenant_id_summary(self, tenant_id: int) -> Tenant:
         options = (
@@ -64,7 +53,6 @@ class RetellService(BaseService[Tenant]):
             selectinload(self.MODEL.balance),
         )
         return await self.get_tenant_by_tenant_id(tenant_id, options)
-
 
     async def get_tenant_by_tenant_id(self, tenant_id: int, options: Sequence = ()) -> Tenant:
         if tenant := await self.fetch_one(filters=(self.MODEL.id == tenant_id,), options=options):

@@ -4,6 +4,7 @@ from enum import StrEnum
 
 COST_CALL_PER_MINUTE: Decimal = Decimal('0.4')
 
+
 class ErrorMessages(StrEnum):
     USER_DOES_NOT_EXIST = 'User does not exist'
     INVALID_ACCESS_TOKEN = 'Invalid access token'
@@ -18,4 +19,3 @@ class ErrorMessages(StrEnum):
 class WebhookEvents(StrEnum):
     CALL_STARTED = 'call_started'
     CALL_ENDED = 'call_ended'
-

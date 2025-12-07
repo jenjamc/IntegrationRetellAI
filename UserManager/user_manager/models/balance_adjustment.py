@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 
 class BalanceAdjustment(BaseModel):
-    __tablename__ = 'BalanceAdjustments'
+    __tablename__ = 'balance_adjustments'
 
     delta_dollars: Mapped[Decimal]
     reason: Mapped[str]

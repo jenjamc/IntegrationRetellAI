@@ -6,7 +6,6 @@ from admin_page.views.base.base_model import BaseModelView
 
 
 class BalanceAdjustmentView(BaseModelView):
-
     def on_model_change(self, form, model, is_created):
         if is_created:
             balance = db.session.query(Balance).filter_by(tenant_id=model.tenant.id).first()

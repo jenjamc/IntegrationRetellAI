@@ -2,10 +2,9 @@ from datetime import datetime
 from decimal import Decimal
 
 from pydantic import BaseModel
-from pydantic import computed_field
 from pydantic import ConfigDict
+from pydantic import computed_field
 
-from user_manager import settings
 from user_manager.models.call import CallStatus
 from user_manager.settings import constants
 
@@ -45,8 +44,3 @@ class UpdateCallSchema(BaseModel):
     @property
     def ended_at(self) -> datetime:
         return datetime.fromtimestamp(self.call_ended_ms // 1000)
-
-
-
-
-

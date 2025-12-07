@@ -2,7 +2,6 @@ from datetime import datetime
 from datetime import timedelta
 
 import jwt
-from sqlalchemy import Column
 
 from user_manager import settings
 

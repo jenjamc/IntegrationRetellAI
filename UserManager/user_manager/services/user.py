@@ -22,14 +22,12 @@ class UserService(BaseService[User]):
             return user
         raise DoesNotExistError(ErrorMessages.USER_DOES_NOT_EXIST)
 
-
     async def check_registered_user(self, user: CreateUserSchema) -> None:
         try:
             await self.get_user_by_email(user.email)
             raise ValidationError(ErrorMessages.USER_ALREADY_REGISTERED)
         except DoesNotExistError:
             pass
-
 
     async def create_user(self, user: CreateUserSchema, tenant_id: int) -> User:
         obj = User(

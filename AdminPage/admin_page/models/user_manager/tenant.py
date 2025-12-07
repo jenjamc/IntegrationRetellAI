@@ -1,16 +1,15 @@
 from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 
 from admin_page.models.user_manager import BaseModel
 
 if TYPE_CHECKING:
-    from admin_page.models.user_manager.user import User
     from admin_page.models.user_manager.balance import Balance
-    from admin_page.models.user_manager.call import Call
     from admin_page.models.user_manager.balance_adjustment import BalanceAdjustment
+    from admin_page.models.user_manager.call import Call
+    from admin_page.models.user_manager.user import User
 
 
 class Tenant(BaseModel):
@@ -29,4 +28,3 @@ class Tenant(BaseModel):
 
     def __repr__(self):
         return f'{self.agent_name}'
-

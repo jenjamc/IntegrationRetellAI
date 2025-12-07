@@ -24,7 +24,7 @@ class Call(BaseModel):
     __tablename__ = 'calls'
 
     call_id: Mapped[str] = mapped_column(unique=True)
-    tenant_id : Mapped[int] = mapped_column(ForeignKey('tenants.id'))
+    tenant_id: Mapped[int] = mapped_column(ForeignKey('tenants.id'))
     status: Mapped[CallStatus] = mapped_column(default=CallStatus.STARTED)
     started_at: Mapped[datetime] = mapped_column(default=datetime.now)
     ended_at: Mapped[datetime] = mapped_column(nullable=True)

@@ -1,4 +1,3 @@
-import hashlib
 from decimal import Decimal
 
 from user_manager.exceptions import DoesNotExistError
@@ -18,18 +17,15 @@ class BalanceService(BaseService[Balance]):
         )
         return await self.insert_obj(obj)
 
-
     async def verify_balance(self, tenant_id: int) -> None:
         balance = await self._get_balance(tenant_id)
         if balance.current_balance <= 0:
             raise ValidationError(ErrorMessages.INSUFFICIENT_FUNDS)
 
-
     async def _get_balance(self, tenant_id: int) -> Balance:
         if balance := await self.fetch_one(filters=(self.MODEL.tenant_id == tenant_id,)):
             return balance
         raise DoesNotExistError(ErrorMessages.BALANCE_DOES_NOT_EXIST)
-
 
     async def decrease_balance(self, tenant_id: int, cost: Decimal) -> Balance:
         balance = await self._get_balance(tenant_id)

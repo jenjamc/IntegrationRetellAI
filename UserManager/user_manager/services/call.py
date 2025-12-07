@@ -1,9 +1,3 @@
-import hashlib
-from decimal import Decimal
-
-from user_manager import settings
-from user_manager.exceptions import DoesNotExistError
-from user_manager.models.balance import Balance
 from user_manager.models.call import Call
 from user_manager.models.call import CallStatus
 from user_manager.schemas.call import UpdateCallSchema
@@ -22,7 +16,6 @@ class CallService(BaseService[Call]):
         )
         return await self.insert_obj(obj)
 
-
     async def set_call_in_progress(self, call_id: str, tenant_id: int) -> None:
         await self.update(
             filters=(
@@ -31,7 +24,6 @@ class CallService(BaseService[Call]):
             ),
             values={'status': CallStatus.IN_PROGRESS},
         )
-
 
     async def end_call(self, call_id: str, tenant_id: int, update_data: UpdateCallSchema) -> None:
         await self.update(
