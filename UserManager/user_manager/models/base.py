@@ -19,6 +19,6 @@ def utc_now():
 class BaseModel(Base):  # type: ignore
     __abstract__ = True
 
-    id: Mapped[int] = Column(Integer, primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = Column(DateTime, default=utc_now)
-    updated_at: Mapped[datetime] = Column(DateTime, default=utc_now, onupdate=utc_now)
+    id: Mapped[int] = Column(Integer, primary_key=True, autoincrement=True)  # type: ignore
+    created_at: Mapped[datetime] = Column(DateTime, default=utc_now)  # type: ignore
+    updated_at: Mapped[datetime] = Column(DateTime, default=utc_now, onupdate=utc_now)  # type: ignore
