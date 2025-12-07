@@ -29,7 +29,7 @@ class Settings(BaseSettings):
 
     DB_DRIVER: str = 'postgresql'
     DB_USER: str = 'postgres'
-    DB_PASS: str = 'postgres'
+    DB_PASS: str = 'postgres123'
     DB_HOST: str = 'db'
     DB_PORT: int = 5432
 

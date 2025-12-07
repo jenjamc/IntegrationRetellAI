@@ -26,6 +26,7 @@ pyotp = "^2.9.0"
 redis = "^7.1.0"
 pydantic = {extras = ["email"], version = "^2.12.4"}
 uvloop = "^0.22.1"
+retell-sdk = "^4.65.0"
 
 
 [tool.poetry.group.dev.dependencies]

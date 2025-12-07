@@ -3,7 +3,9 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 from user_manager import version
 from user_manager.api import base
+from user_manager.api import retell
 from user_manager.api import user
+from user_manager.api import webhook
 from user_manager.exception_handlers import FastAPIExceptionHandlers
 from user_manager.middlewares import init_middlewares
 from user_manager.models import metadata
@@ -18,6 +20,8 @@ PREFIX: str = '/users'
 def init_routes(fast_api_app: 'FastAPI') -> None:
     fast_api_app.include_router(base.router, prefix=PREFIX, tags=['Base'])
     fast_api_app.include_router(user.router, prefix=PREFIX, tags=['User'])
+    fast_api_app.include_router(retell.router, prefix=PREFIX, tags=['Retell'])
+    fast_api_app.include_router(webhook.router, prefix=PREFIX, tags=['Webhook'])
 
 
 def init_db(app_settings: Settings):

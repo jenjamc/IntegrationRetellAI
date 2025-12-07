@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { login } from "../api/apiClient";
-import type { LoginPayload } from "../api/apiClient";
+import { login } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import type { FormEvent } from "react";
+import type { LoginPayload } from "../api/types";
 
 export default function Login() {
   const navigate = useNavigate();

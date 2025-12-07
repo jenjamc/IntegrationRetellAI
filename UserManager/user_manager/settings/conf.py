@@ -28,14 +28,18 @@ class Settings(BaseSettings):
 
     DB_DRIVER: str = 'postgresql+asyncpg'
     DB_USER: str = 'postgres'
-    DB_PASS: str = 'postgres'
-    DB_HOST: str = 'db'
+    DB_PASS: str = 'postgres123'
+    DB_HOST: str = 'host.docker.internal'
     DB_PORT: int = 5432
     DB_NAME: str = 'user_manager'
 
     SECRET_KEY: str = 'your-secret-key'
     ALGORITHM: str = 'HS256'
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+
+    RETELL_API_KEY: str = 'YOUR_RETELL_API_KEY'
+    RETELL_WEBHOOK_KEY: str = 'YOUR_RETELL_API_KEY'
+    RETELL_WEBHOOK: str = 'http://localhost:4000/users/webhook'
 
     @property
     def sqlalchemy_database_uri(self) -> str:

@@ -8,22 +8,10 @@ x-base:
   tty: true
   env_file:
     - .env
-  depends_on:
-    - db
   volumes:
     - .:/app
 
 services:
-  db:
-    image: postgres:16
-    volumes:
-      - "pg_data:/var/lib/postgresql/data"
-    environment:
-      POSTGRES_DB: user_manager
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
 
   backend:
     <<: *base-backend

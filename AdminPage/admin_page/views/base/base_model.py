@@ -27,14 +27,12 @@ class BaseModelView(PermissionsViewMixin, ModelView):
 
         cols = []
         for col in model.__table__.columns:
-            if not isinstance(col.type, ARRAY):
+            if col.name != 'password_hash' and not isinstance(col.type, ARRAY):
                 cols.append(col.name)
 
         column_list = tuple(cols)
 
-        if cls.column_filters is not None:
-            column_list = column_list + cls.column_filters
-
+        instance.column_list = column_list
         instance.column_filters = column_list
         instance.column_sortable_list = model.__table__.columns.keys()
         return instance

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { register } from "../api/apiClient";
-import type { RegisterPayload } from "../api/apiClient";
+import { register } from "../api/api";
+
 import { useNavigate } from "react-router-dom";
 import type { FormEvent } from "react";
+import type { RegisterPayload } from "../api/types";
 
 export default function Register() {
   const navigate = useNavigate();

@@ -14,6 +14,7 @@ class UserSchema(BaseModel):
     email: str
     first_name: str | None
     last_name: str | None
+    tenant_id: int
 
 
 class CreateUserSchema(LoginUserSchema):

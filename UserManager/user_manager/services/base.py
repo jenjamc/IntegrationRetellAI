@@ -18,7 +18,7 @@ ModelT = TypeVar('ModelT', bound=Base)
 class BaseService(Generic[ModelT]):
     MODEL: Type[ModelT] = Base
 
-    def __init__(self, session: 'AsyncSession'):
+    def __init__(self, session: AsyncSession):
         self.session = session
 
     async def fetch_one(self, filters: Sequence, options: Sequence = ()) -> ModelT | None:
