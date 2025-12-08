@@ -74,6 +74,13 @@ Connect to `admin_page` DB and create: - first admin role\
 - permissions\
 - admin user
 
+**Permissions name have patterns:**
+- View name
+- View name + '_can_create'
+- View name + '_can_delete'
+- View name + '_can_edit'
+- View name + '_can_view_details'
+
 ## 💻 Front-End Setup
 
 ``` bash
